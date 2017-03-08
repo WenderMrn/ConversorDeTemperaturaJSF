@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+	<h:form id="form">
+		<h:panelGrid style="margin: 0 auto;">
+			<f:facet name = "header">
+      			<h1  style="text-align: center;">Conversor de Temperaturas</h1>
+   			</f:facet>
+			<h:panelGroup>
+				<h:outputLabel for="tempc">Temperatura em °C: </h:outputLabel>
+				<h:inputText id="intempc" value="#{conversorBean.intempc}">
+					<f:validateDoubleRange minimum="-20" maximum="200" />
+				</h:inputText>
+				<h:commandButton id="btconvf" value="para °F = " actionListener="#{conversorBean.converter}"/>
+				<h:inputText id="outtempc" value="#{conversorBean.outtempf}">
+					<f:convertNumber minFractionDigits="2" />
+				</h:inputText>
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputLabel for="tempf">Temperatura em °F: </h:outputLabel>
+				<h:inputText id="intempf" value="#{conversorBean.intempf}">
+					<f:validateDoubleRange minimum="-150" maximum="300" />
+				</h:inputText>
+				<h:commandButton id="btconvc" value="para °C = " actionListener="#{conversorBean.converter}"/>
+				<h:inputText id="outtempf" value="#{conversorBean.outtempc}">
+					<f:convertNumber minFractionDigits="2" />
+				</h:inputText>
+			</h:panelGroup>
+			<h:messages style = "color:red;margin:8px;" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>
